@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="banner">
+
+    <div class="navbar">
+
+      <ul class="links">
+
+        <li>
+          <a href="/" class="home-btn">Home</a>
+        </li>
+
+        <li>
+          <div class="DropDown">
+            {% for category_name in category_names %}
+            <a href="category/{{category_name.name}}">{{category_name.name}}</a>
+            {%endfor%}
+          </div>
+        </li>
+       
+      </ul>
+
+    </div>
+    
+    <div class="content">
+      {% for element in elements %}
+      <div class="card">
+
+        <div class="image">
+
+          <div class="first-half">
+
+            <img src="{{element.left_elem.url}}" alt="">
+  
+          </div>
+
+          <div class="second-half">
+
+            <img src="{{element.right_elem.url}}" alt="">
+
+          </div>
+
+        </div>
+
+        <div class="card-content">
+
+          <div class="name-desc">
+
+            <p class="card-name">{{element.battle_name}}</p>
+
+            <p class="card-desc">{{element.battle_description}}</p>
+
+          </div>
+
+          <div class="btn">
+
+            <a href="/card/{{element.battle_name}}" class="vote-btn">Let's vote</a>
+
+          </div>
+
+        </div>
+        
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</body>
+</html>
